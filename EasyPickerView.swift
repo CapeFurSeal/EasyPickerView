@@ -63,7 +63,7 @@ class EasyPickerView: UIView {
     
     func finishPickerAction() {
         hidePickerView()
-        delegates?.easyPickerView?(easyPickerView, didSelect: getSelectedPickerRows())
+        delegates?.easyPickerView?(easyPickerView, didSelectPicker: getSelectedPickerRows())
         selectedPickerRows = nil
     }
     private func hidePickerView() {
@@ -88,5 +88,5 @@ class EasyPickerView: UIView {
 
 @objc
 protocol EasyPickerViewDelegate: UIPickerViewDelegate {
-    optional func easyPickerView(pickerView: UIPickerView, didSelect numbers: [Int])
+    optional func easyPickerView(pickerView: UIPickerView, didSelectPicker pickerRows: [Int])
 }
