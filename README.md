@@ -32,7 +32,7 @@ class ViewController: UIViewController, EasyPickerViewDelegate {
         }
         
         let easyButton = UIButton.buttonWithType(UIButtonType.InfoDark) as UIButton
-        easyButton.frame = CGRectMake(50, 100, 30, 30);
+        easyButton.frame = CGRectMake(50, 50, 40, 40);
         easyButton.addTarget(self, action: "enableEasyPicker", forControlEvents: UIControlEvents.TouchDown)
         self.view.addSubview(easyButton)
     }
