@@ -14,43 +14,16 @@ An easy extension to show a picker view
 ## Examples
 
 ```
-import UIKit
-class ViewController: UIViewController, EasyPickerViewDelegate {
-    var easyPickerView: EasyPickerView!
-    let easyArray = ["option1", "option2", "option3", "option4"]
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
+let easyPickerView = PickerView()
+easyPickerView.translatesAutoresizingMaskIntoConstraints = false
+easyPickerView.dataSource = self
+easyPickerView.delegate = self
+view.addSubview(examplePicker)
+view.addConstraints([easyPickerConstraints])
 
-        pickerView = EasyPickerView()
-        pickerView.delegates = self
-        
-        if let window = UIApplication.sharedApplication().keyWindow {
-            window.addSubview(pickerView)
-        } else {
-            self.view.addSubview(pickerView)
-        }
-        
-        let easyButton = UIButton.buttonWithType(UIButtonType.InfoDark) as UIButton
-        easyButton.frame = CGRectMake(50, 50, 40, 40);
-        easyButton.addTarget(self, action: "enableEasyPicker", forControlEvents: UIControlEvents.TouchDown)
-        self.view.addSubview(easyButton)
-    }
-    func enableEasyPicker() {
-        pickerView.showPickerView()
-    }
-    
-    override func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
-        return 1
-     }
-    override func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int{
-        return easyArray.count
-    }
-    override func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
-        return easyArray[row]
-    }
-    func pickerView(pickerView: UIPickerView, didSelectPicker pickerRows: [Int]) {
-        println(pickerRows)
-    }
+@objc public protocol EasyPickerViewDataSource: class {
+func easyPickerViewNumberOfRows(_ pickerView: EasyPickerView) -> Int
+func easyPickerickerView(_ pickerView: EasyPickerView, titleForRow row: Int, index: Int) -> String
 }
+
 ```
